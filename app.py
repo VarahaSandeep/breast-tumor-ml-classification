@@ -36,9 +36,9 @@ st.set_page_config(
 st.markdown("""
 <style>
     :root {--indigo:#4f46e5;--cyan:#0891b2;--ink:#17233d;--muted:#62718b;}
-    .stApp {background:linear-gradient(150deg,#f1f5ff 0%,#f7fbff 55%,#edf7fb 100%);}
+    .stApp {background:linear-gradient(150deg,#ffffff 0%,#f8fbff 55%,#eef4fb 100%);}
     .block-container {padding-top:1.4rem;padding-bottom:2.5rem;max-width:1450px;}
-    [data-testid="stSidebar"] {background:#eef2ff; border-right:1px solid #dbe3ff;}
+    [data-testid="stSidebar"] {background:#eef4fb; border-right:1px solid #d6e2f0;}
     [data-testid="stSidebar"] [role="radiogroup"] label {padding:.42rem .48rem;border-radius:9px;}
     [data-testid="stSidebar"] [role="radiogroup"] label:hover {background:#e1e7fd;}
     .hero {background:linear-gradient(112deg,#172554 0%,#3730a3 57%,#0e7490 100%);
@@ -73,6 +73,190 @@ st.markdown("""
     div[data-testid="stTabs"] button {font-weight:650;}
     div[data-testid="stDataFrame"] {border-radius:12px;overflow:hidden;}
     .footer-note {color:#66768e;font-size:.83rem;line-height:1.6;margin-top:1.2rem;}
+
+    /* Force an accessible light interface even when the OS/browser prefers dark mode. */
+    :root, .stApp, [data-testid="stAppViewContainer"] {
+        color-scheme: light !important;
+        --text-color: #1b2a3a !important;
+        --background-color: #ffffff !important;
+        --secondary-background-color: #eef4fb !important;
+        --primary-color: #1f6feb !important;
+    }
+    html, body, .stApp, [data-testid="stAppViewContainer"],
+    [data-testid="stMain"], [data-testid="stMainBlockContainer"] {
+        color: #17233d !important;
+    }
+    /* Streamlit native headings, markdown, helper text, and descriptions. */
+    [data-testid="stMain"] h1, [data-testid="stMain"] h2,
+    [data-testid="stMain"] h3, [data-testid="stMain"] h4,
+    [data-testid="stMain"] p, [data-testid="stMain"] li,
+    [data-testid="stMain"] label, [data-testid="stMain"] span,
+    [data-testid="stMain"] [data-testid="stMarkdownContainer"] {
+        color: #17233d;
+    }
+    [data-testid="stMain"] .hero h1, [data-testid="stMain"] .hero .hero-chip {
+        color: #ffffff !important;
+    }
+    [data-testid="stMain"] .hero p {color:#e4edff !important;}
+    [data-testid="stMain"] .hero .eyebrow {color:#bde9fa !important;}
+    [data-testid="stMain"] .section-title {color:#172554 !important;}
+    [data-testid="stMain"] .section-desc, [data-testid="stMain"] .data-note,
+    [data-testid="stMain"] .footer-note, [data-testid="stMain"] .eyebrow-dark {
+        color:#475569 !important;
+    }
+    [data-testid="stMain"] .metric-card .label {color:#475569 !important;}
+    [data-testid="stMain"] .metric-card .value {color:#192a4b !important;}
+    [data-testid="stMain"] .metric-card .hint {color:#52627b !important;}
+    [data-testid="stMain"] .mini-stat .lbl {color:#475569 !important;}
+    [data-testid="stMain"] .mini-stat .num {color:#1e3a8a !important;}
+
+    /* Sidebar is lavender, so EVERY native Streamlit label must be dark. */
+    [data-testid="stSidebar"], [data-testid="stSidebarContent"],
+    [data-testid="stSidebarUserContent"] {
+        background-color:#eef4fb !important;
+        color:#17233d !important;
+        color-scheme:light !important;
+    }
+    [data-testid="stSidebar"] h1, [data-testid="stSidebar"] h2,
+    [data-testid="stSidebar"] h3, [data-testid="stSidebar"] p,
+    [data-testid="stSidebar"] label, [data-testid="stSidebar"] span,
+    [data-testid="stSidebar"] small,
+    [data-testid="stSidebar"] [data-testid="stMarkdownContainer"],
+    [data-testid="stSidebar"] [data-testid="stWidgetLabel"] {
+        color:#17233d !important;
+    }
+    [data-testid="stSidebar"] [data-testid="stCaptionContainer"] *,
+    [data-testid="stSidebar"] .stCaption {color:#475569 !important;}
+    [data-testid="stSidebar"] [role="radiogroup"] label,
+    [data-testid="stSidebar"] [role="radiogroup"] label * {
+        color:#17233d !important;
+    }
+    [data-testid="stSidebar"] [role="radiogroup"] label:hover {
+        background:#dfe7ff !important;
+    }
+    [data-testid="stSidebar"] [data-baseweb="select"] > div,
+    [data-testid="stSidebar"] [data-baseweb="select"] input,
+    [data-testid="stMain"] [data-baseweb="select"] > div,
+    [data-testid="stMain"] [data-baseweb="select"] input {
+        background-color:#ffffff !important;
+        color:#17233d !important;
+        -webkit-text-fill-color:#17233d !important;
+        border-color:#b9c6e4 !important;
+    }
+    [data-testid="stSidebar"] [data-baseweb="select"] *,
+    [data-testid="stMain"] [data-baseweb="select"] * {
+        color:#17233d !important;
+    }
+    [role="listbox"], [role="option"], [data-baseweb="popover"] {
+        background-color:#ffffff !important;
+        color:#17233d !important;
+    }
+    [role="option"] * {color:#17233d !important;}
+    [role="option"]:hover {background:#e3eaff !important;}
+
+    /* Inputs, uploader, buttons, and informational banners. */
+    [data-testid="stFileUploaderDropzone"],
+    [data-testid="stFileUploaderDropzone"] * {
+        color:#17233d !important;
+    }
+    [data-testid="stFileUploaderDropzone"] {
+        background:#ffffff !important;
+        border:1px dashed #8fa6d8 !important;
+        border-radius:12px !important;
+    }
+    [data-testid="stFileUploaderDropzone"] button,
+    [data-testid="stBaseButton-secondary"],
+    [data-testid="stBaseButton-tertiary"] {
+        background:#ffffff !important;
+        color:#17233d !important;
+        border-color:#aab9d7 !important;
+    }
+    [data-testid="stFileUploaderDropzone"] button *,
+    [data-testid="stBaseButton-secondary"] *,
+    [data-testid="stBaseButton-tertiary"] * {color:#17233d !important;}
+    [data-testid="stBaseButton-primary"] {
+        background:#4f46e5 !important;
+        color:#ffffff !important;
+    }
+    [data-testid="stBaseButton-primary"] * {color:#ffffff !important;}
+    [data-testid="stAlert"] {border-radius:12px !important;}
+    [data-testid="stAlert"] p, [data-testid="stAlert"] span,
+    [data-testid="stAlert"] [data-testid="stMarkdownContainer"] {
+        color:#17233d !important;
+    }
+    [data-testid="stMain"] [data-testid="stDataFrame"] {
+        background:#ffffff !important;
+        color:#17233d !important;
+    }
+    [data-testid="stMain"] [data-testid="stSelectbox"] label,
+    [data-testid="stMain"] [data-testid="stFileUploader"] label {
+        color:#17233d !important;
+    }
+    [data-testid="stSidebar"] hr {border-color:#b9c6e4 !important;}
+    @media (prefers-color-scheme: dark) {
+        .stApp, [data-testid="stAppViewContainer"] {
+            color-scheme:light !important;
+            color:#17233d !important;
+        }
+        [data-testid="stSidebar"] {background:#eef4fb !important;}
+    }
+
+
+    /* FINAL CONTRAST RULES: preserve white text inside the dark hero banner.
+       Streamlit's Markdown h1 theme styles otherwise override .hero h1. */
+    html body .stApp .hero,
+    html body .stApp .hero h1,
+    html body .stApp .hero h1 *,
+    html body .stApp .hero .hero-title {
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+        opacity: 1 !important;
+    }
+    html body .stApp .hero p,
+    html body .stApp .hero p * {
+        color: #eef6ff !important;
+        -webkit-text-fill-color: #eef6ff !important;
+    }
+    html body .stApp .hero .eyebrow,
+    html body .stApp .hero .eyebrow * {
+        color: #c5e8ff !important;
+        -webkit-text-fill-color: #c5e8ff !important;
+    }
+    html body .stApp .hero .hero-chip,
+    html body .stApp .hero .hero-chip * {
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+    }
+    /* Light surfaces and dark readable text on sidebar, page, and controls. */
+    html body .stApp [data-testid="stSidebar"] {
+        background-color: #eef4fb !important;
+        color: #1b2a3a !important;
+    }
+    html body .stApp [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p,
+    html body .stApp [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] span,
+    html body .stApp [data-testid="stSidebar"] [role="radiogroup"] label,
+    html body .stApp [data-testid="stSidebar"] [role="radiogroup"] label * {
+        color: #1b2a3a !important;
+        -webkit-text-fill-color: #1b2a3a !important;
+    }
+    html body .stApp .section-title,
+    html body .stApp .metric-card .value,
+    html body .stApp .mini-stat .num {
+        color: #102a46 !important;
+        -webkit-text-fill-color: #102a46 !important;
+    }
+    html body .stApp .section-desc,
+    html body .stApp .footer-note,
+    html body .stApp .metric-card .hint {
+        color: #506176 !important;
+        -webkit-text-fill-color: #506176 !important;
+    }
+    html body .stApp [data-testid="stBaseButton-secondary"] {
+        background-color: #ffffff !important;
+        color: #1b2a3a !important;
+        border-color: #c4d3e5 !important;
+    }
+
 </style>
 """, unsafe_allow_html=True)
 
@@ -308,6 +492,7 @@ if section == "🎯 Individual Model":
             spine.set_visible(False)
         fig.patch.set_facecolor("white")
         fig.tight_layout()
+        fig.subplots_adjust(left=0.24, bottom=0.20)
         st.pyplot(fig, use_container_width=True)
         plt.close(fig)
     with details_col:
